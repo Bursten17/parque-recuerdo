@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">List of Empleados</h4>
+        <div class="border-bottom border-primary w-100"></div>
+    </div>
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Nacimiento</th>
+                    <th scope="col">Ingreso</th>
+                    <th scope="col">Afp</th>
+                    <th scope="col">Nombre Cargo</th>
+                    <th scope="col">Sueldo</th>
+                    <th scope="col">
+                        <button [routerLink]="['create']" class="btn btn-primary btn-icon btn-round" type="button">
+                            <i class="tim-icons icon-simple-add"> </i>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of empleados;let index=index">
+                    <td data-label="Code" class="colorLetterPrimary">{{item.nombres}}</td>
+                    <td data-label="Name">{{item.apellidos}}</td>
+                    <td data-label="Name">{{item.fecha_nacimiento}}</td>
+                    <td data-label="Name">{{item.fecha_ingreso}}</td>
+                    <td data-label="Name">{{item.afp}}</td>
+                    <td data-label="Name">{{item.nombre_cargo}}</td>
+                    <td data-label="Name">{{item.sueldo}}</td>
+                    <td>
+                        <button [routerLink]="['update', item.n_id_role]" class="btn btn-primary btn-icon btn-round"
+                            type="button">
+                            <i class="tim-icons icon-pencil"> </i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

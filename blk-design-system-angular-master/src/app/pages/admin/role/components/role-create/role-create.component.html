@@ -1,0 +1,55 @@
+<div *ngIf="form" class="card">
+    <form [formGroup]="form" (ngSubmit)="save($event)">
+        <div class="card-header">
+            <h4 class="card-title">Create Role</h4>
+            <div *ngIf="!sending" class="border-bottom border-primary w-100"></div>
+            <app-progress-bar *ngIf="sending"></app-progress-bar>
+        </div>
+        <div class="card-body">
+            <div class="form-group" [ngClass]="s_name_field.errors && s_name_field.dirty ? 'has-danger' : ''">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="Name" type="text"
+                            formControlName="s_name" />
+                        <div *ngIf="s_name_field.errors && s_name_field.dirty">
+                            <div *ngIf="s_name_field.hasError('required')" class="invalid-feedback">Name is required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="Description" type="text"
+                            formControlName="s_description" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <mat-slide-toggle (change)="onChange($event)" [disabled]="sending"
+                            [checked]="n_state_field.value === 1 ? true : false">
+                            <div *ngIf="n_state_field.value === 1">
+                                Active
+                            </div>
+                            <div *ngIf="n_state_field.value !== 1">
+                                Inactive
+                            </div>
+                        </mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row justify-content-end">
+                <div class="col-12 col-sm-12 col-lg-2 ">
+                    <button [disabled]="form.invalid || sending" class="btn fullWidth btn-primary btn-sm" type="submit">
+                        <i class="fas fa-save"></i>
+                        Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

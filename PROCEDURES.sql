@@ -1,0 +1,62 @@
+CREATE PROCEDURE USP_LOGIN 
+@P_USUARIO nvarchar(100)
+, @P_CLAVE nvarchar(100)
+AS
+	SELECT 
+			ID
+			,USUARIO
+	FROM 
+			TB_USER 
+	WHERE 
+			USUARIO = @P_USUARIO 
+			AND CLAVE = @P_CLAVE
+
+
+EXEC USP_LOGIN @P_USUARIO = 'fernando', @P_CLAVE = 'Qlixim-30'
+
+
+CREATE PROCEDURE USP_LISTADO_EMPLEADOS 
+AS
+	SELECT 
+			e.ID
+			,e.NOMBRES
+			,e.APELLIDOS
+			,e.FECHA_NACIMIENTO
+			,e.FECHA_INGRESO
+			,e.AFP
+			,e.CARGO_ID
+			,c.NOMBRE as NOMBRE_CARGO
+			,e.SUELDO
+	FROM 
+			TB_EMPLEADOS e INNER JOIN TB_CARGO c
+	ON
+			e.CARGO_ID = c.ID
+
+CREATE PROCEDURE USP_CREAR_EMPLEADOS
+@P_NOMBRES nvarchar(100)
+,@P_APELLIDOS nvarchar(100)
+,@P_FECHA_NACIMIENTO Date
+,@P_AFP bit
+,@P_CARGO_ID int
+,@P_SUELDO decimal
+AS
+	INSERT INTO TB_EMPLEADOS VALUES(@P_NOMBRES
+									,@P_APELLIDOS
+									,@P_FECHA_NACIMIENTO
+									,getdate()
+									,@P_AFP
+									,@P_CARGO_ID
+									,@P_SUELDO);
+
+
+EXEC USP_CREAR_EMPLEADOS @P_NOMBRES = 'fernando'
+						, @P_APELLIDOS = 'Qlixim-30'
+						, @P_FECHA_NACIMIENTO = '01-01-2000'
+						, @P_AFP = 1
+						, @P_CARGO_ID = 1
+						, @P_SUELDO = 12000
+
+
+
+
+

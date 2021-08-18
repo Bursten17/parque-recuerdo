@@ -1,0 +1,72 @@
+<div *ngIf="form" class="card">
+    <form [formGroup]="form" (ngSubmit)="save($event)">
+        <div class="card-header">
+            <h4 class="card-title">Crear Empleado</h4>
+            <div *ngIf="!sending" class="border-bottom border-primary w-100"></div>
+            <app-progress-bar *ngIf="sending"></app-progress-bar>
+        </div>
+        <div class="card-body">
+            <div class="form-group" [ngClass]="s_name_field.errors && s_name_field.dirty ? 'has-danger' : ''">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="nombres" type="text"
+                            formControlName="nombres" />
+                        <!-- <div *ngIf="s_name_field.errors && s_name_field.dirty">
+                            <div *ngIf="s_name_field.hasError('required')" class="invalid-feedback">Name is required
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="apellidos" type="text"
+                            formControlName="apellidos" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="fecha_nacimiento" type="text"
+                            formControlName="fecha_nacimiento" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="afp" type="text"
+                            formControlName="afp" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="cargo_id" type="text"
+                            formControlName="cargo_id" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <input class="form-control form-control-sm" placeholder="sueldo" type="text"
+                            formControlName="sueldo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row justify-content-end">
+                <div class="col-12 col-sm-12 col-lg-2 ">
+                    <button [disabled]="form.invalid || sending" class="btn fullWidth btn-primary btn-sm" type="submit">
+                        <i class="fas fa-save"></i>
+                        Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

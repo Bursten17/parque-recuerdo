@@ -1,0 +1,53 @@
+<div class="page-header">
+  <img class="path" src="assets/img/blob.png" />
+
+  <img class="path2" src="assets/img/path2.png" />
+
+  <img class="shapes triangle" src="assets/img/triunghiuri.png" />
+
+  <img class="shapes wave" src="assets/img/waves.png" />
+
+  <img class="shapes squares" src="assets/img/patrat.png" />
+
+  <img class="shapes circle" src="assets/img/cercuri.png" />
+  
+  <div class="content-center">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let img of images">
+          <img [src]="img" alt="imagen de banner">
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row row-grid justify-content-between align-items-center text-left">
+      <div class="col-lg-6 col-md-6">
+        <h1 class="text-white">
+          We keep your coin <br />
+
+          <span class="text-white"> secured </span>
+        </h1>
+        <p class="text-white mb-3">
+          A wonderful serenity has taken possession of my entire soul, like
+          these sweet mornings of spring which I enjoy with my whole heart. I
+          am alone, and feel...
+        </p>
+        <div class="btn-wrapper">
+          <div class="button-container">
+            <button class="btn btn-icon btn-simple btn-round btn-neutral mr-1" href="javascript:void(0)">
+              <i class="fab fa-twitter"> </i>
+            </button>
+            <button class="btn btn-icon btn-simple btn-round btn-neutral mr-1" href="javascript:void(0)">
+              <i class="fab fa-dribbble"> </i>
+            </button>
+            <button class="btn btn-icon btn-simple btn-round btn-neutral" href="javascript:void(0)">
+              <i class="fab fa-facebook"> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-5">
+        <img alt="Circle image" class="img-fluid" src="assets/img/etherum.png" />
+      </div>
+    </div> -->
+  </div>
+</div>

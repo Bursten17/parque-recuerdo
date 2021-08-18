@@ -1,0 +1,46 @@
+<mat-sidenav-container class="sidenav-container bg-secondary">
+  <mat-sidenav #drawer class="sidenav bg-secondary" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-toolbar class="title">aaa</mat-toolbar>
+    <mat-nav-list>
+      <span *ngFor="let item of menu">
+        <mat-list-item (click)="item.b_showSubmenu = !item.b_showSubmenu" [routerLink]="item.s_to" class="parent">
+          <!-- <div class="full-width" *ngIf="isExpanded || isShowing">
+            <h5>{{item.s_name_modulo}}</h5>
+          </div>class="title" -->
+          <span class="full-width colorLetterPrimary" *ngIf="isExpanded || isShowing">{{item.s_name_modulo}}</span>
+          <mat-icon mat-list-icon class="colorLetterPrimary">{{item.s_icon}}</mat-icon>
+          <mat-icon class="menu-button colorLetterPrimary" [ngClass]="{'rotated' : showSubmenu}" *ngIf="item.a_submodule">
+            expand_more
+          </mat-icon>
+        </mat-list-item>
+        <div class="submenu" [ngClass]="{'expanded' : item.b_showSubmenu}" *ngIf="item.a_submodule">
+          <a class="colorLetterPrimary" mat-list-item *ngFor="let submodule of item.a_submodule"
+            [routerLink]="submodule.s_to">{{submodule.s_name_modulo}}</a>
+          <!-- <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
+            <span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
+            <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">
+              expand_more</mat-icon>
+          </mat-list-item>
+          <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
+            <mat-list-item>SubSubmenu Item 1</mat-list-item>
+            <mat-list-item>SubSubmenu Item 2</mat-list-item>
+          </div> -->
+        </div>
+      </span>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="bg-secondary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon class="text-primary" aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <h2 class="title">Admin</h2>
+    </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
